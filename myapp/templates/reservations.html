@@ -1,0 +1,104 @@
+<body>
+    <header>
+        <div id="head_logo">
+            <img src="../static/img/logo.png" alt="logo">
+        </div>
+        <nav id="nav">
+            <a href="">Home</a>
+            <a href="">About</a>
+            <a href="">Menu</a>
+            <a href="{%url 'booking'%}">Book</a>
+            <a href="{%url 'reservations'%}">Reservations</a>
+        </nav>
+
+    </header>
+    <div id="main">
+        <h2>Here are all the Reservations!!</h2>
+        {% csrf_token %}
+        
+        <table>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Reservation Data</th>
+                <th>Reservation Time</th>
+            </tr>
+            {% for x in data %}
+            <tr>
+                <td>{{x.first_name}}</td>
+                <td>{{x.last_name}}</td>
+                <td>{{x.reservation_date}}</td>
+                <td>{{x.reservation_time}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        
+    </div>
+    <footer>
+         <div id="footer">
+            <img id="foot-logo" src="../static/img/logo_footer.png">
+            <div id="copyright-line">
+                <div id="line"></div>
+            <p id="copyright">Copyright Little Lemon</p>
+            </div>
+         </div>
+    </footer>
+</body>
+<style>
+    a{
+        margin-right: 37px;
+        color: white;
+        text-decoration: none;
+    }
+    #nav{
+        background-color: #495E57;
+      justify-content: center;
+      display: flex;
+      font-size: 20px;
+      font-family: arial;
+      /*margin-left: 35px;*/
+      margin-top: 30px;
+      padding: 5px;
+     
+    }
+    #head_logo{
+        justify-content: center;
+        display: grid;
+        margin-right: 35px;
+    }
+    #main{
+        margin-left: 3%;
+    }
+    td,th{
+          height:40px ;
+          width: 100px;
+    }
+    table,td,th{
+        border: 2px solid black;
+        
+        
+    }
+    #footer{
+            margin-top: 5%;
+            display:flex;
+            background-color: #edefee;
+            padding-top: 20px;
+            padding-bottom: 25px;
+        }
+        #foot-logo{
+             margin-top: auto;
+             margin-left: 5%;
+        }
+        #copyright{
+            
+        }
+        #line{
+            border-bottom: 2px solid #495E57;
+            padding-right: 20px;
+            
+        }
+        #copyright-line{
+            margin-left: 75%;
+            margin-top: 30px;
+        }
+</style>
